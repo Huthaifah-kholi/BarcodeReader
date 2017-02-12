@@ -1,0 +1,25 @@
+<ion-view title="Signup" id="signup">
+    <ion-content padding="true" class="has-header">
+        <form class="list">
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" ng-model="signup.userName" placeholder="">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="signup.email" placeholder="">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="signup.password" placeholder="">
+                </label>
+                <ion-toggle  toggle-class="toggle-calm" ng-model="signup.adminAccount" ng-init="signup.adminAccount=false">
+                    Admin Account?
+                </ion-toggle>
+            </ion-list>
+            <button class="button button-stable  button-block" ng-click="signup(signup)">Sign up</button>
+            <a href="#/login" class="button button-positive  button-block button-clear">Or login</a>
+        </form>
+    </ion-content>
+</ion-view>

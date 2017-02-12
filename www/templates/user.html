@@ -1,0 +1,13 @@
+<ion-view title="Welcome {{name}}" id="user">
+    <ion-nav-buttons side="primary">
+        <button class="button button-positive button-clear" ng-click="logout()">
+            Logout
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+        <button class="button button-positive  button-block" ng-click="scan()">Read code</button>
+        <div ng-show ="userCode">Your code : {{userCode}}</div>
+        <br>
+    <!-- The enterd Barcode : {{result}} -->
+    </ion-content>
+</ion-view>
