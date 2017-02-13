@@ -41,5 +41,5 @@ function ($scope, $stateParams, $auth, $state, $http, $rootScope, $ionicPopup, A
 						$state.go('user');
 					}
 				});
-    }// end "$scope.login" functoin
-}])
+    };
+}]);

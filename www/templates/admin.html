@@ -6,17 +6,17 @@
     </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
         <ion-list ng-repeat="user in users">
-            <ion-item>{{user.name}}
+            <ion-item class="item-divider item-button-right">
+                {{user.name}}
+                <button class="button button-clear button-positive" ng-click="changeBarcode({{user.id}})">add</button>
+            </ion-item>
+            <ion-item ng-repeat="barcode in user.barcodes">
                 <br>
                     <span class="item-note">
-                        <io-barcode style="width: 100%" code="{{user.text}}" type="CODE39"></io-barcode>
+                        <io-barcode style="width: 100%" code="{{barcode.text}}" type="CODE39"></io-barcode>
                     </span>
                     <br>
             </ion-item>
-            <button class="button button-positive" ng-click="changeBarcode({{user.id}},{{user.user_id}})">
-                Change barcode
-            </button>
         </ion-list>
     </ion-content>
 </ion-view>
- 

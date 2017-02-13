@@ -83,4 +83,4 @@ var app = angular.module('app', ['ionic', 'satellizer','ngCordova','io-barcode']
   };
 })
 
-.constant('APIserver', 'http://6eefdff9.ngrok.io');
+.constant('APIserver', 'http://76956cd6.ngrok.io');

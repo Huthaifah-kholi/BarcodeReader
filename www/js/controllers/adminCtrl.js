@@ -8,21 +8,20 @@ function ($scope, $stateParams, $auth, $rootScope, $state, $http, APIserver )
     .success(function(data) {
         console.log(data);
         $scope.users = data;
-        debugger;
+        // debugger;
     })
     .error(function(data) {
         console.error('Repos error', data);
-    })
+    });
 
-    $scope.changeBarcode = function(id,user_id)
+    $scope.changeBarcode = function(id)
     {
         // console.log("the id to send",id);
         var newid = 
         {
-            newId : id,
-            newUserId : user_id
+            newId : id
 
-        }
+        };
         // debugger;
         $http.post(APIserver+'/genrateBarcode',newid)
 	        .then(
@@ -33,8 +32,8 @@ function ($scope, $stateParams, $auth, $rootScope, $state, $http, APIserver )
 		        function errorCallback(response) 
 		        {
 		            console.log("error",response);
-		        })
-    }// end of "$scope.genarateBarcode" function
+		        });
+    };// end of "$scope.genarateBarcode" function
 
     $scope.logout = function() 
     {
@@ -46,10 +45,5 @@ function ($scope, $stateParams, $auth, $rootScope, $state, $http, APIserver )
 		            $rootScope.currentUser = null;
 		            $state.go('login');
 		        });
-    }
-
-    function displayUses(data) {
-
-        return ;
-    }
-}])
+    };
+}]);

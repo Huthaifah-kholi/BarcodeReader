@@ -3,7 +3,7 @@ app
 function ($scope, $stateParams, $auth, $rootScope, $state, $cordovaBarcodeScanner, $ionicPlatform, $http, $ionicPopup, APIserver) 
 {
 	// this is to get data from local storgae
-	var readedBarCode=""
+	var readedBarCode="";
 	// debugger;
 	var localStorageObj = localStorage.getItem('userObjStr');
 	var userObj = JSON.parse(localStorageObj);
@@ -23,7 +23,7 @@ function ($scope, $stateParams, $auth, $rootScope, $state, $cordovaBarcodeScanne
 		    $rootScope.currentUser = null;
 		    $state.go('login');
 		});
-	}// end of "$scope.logout" function
+	};// end of "$scope.logout" function
 
 	// for scan barcode
 	$scope.scan = function()
@@ -49,22 +49,22 @@ function ($scope, $stateParams, $auth, $rootScope, $state, $cordovaBarcodeScanne
 		            ////////$scope.scanResults = 'Error: ' + error;
 		        });
 		}); // end of ready function
-	} // end of scan func
+	}; // end of scan func
 
 
 	postBarcode= function (barcodeData) 
 	{
 		// readedBarCode['userid']=
 		console.log("post function" ,readedBarCode);
-		debugger;
+		// debugger;
 		$http.post(APIserver+'/checkBarcode', readedBarCode)
 			.then(
 			    function successCallback(response) 
 			    {
 			        if(response.data === "barcode not exist")
 			        {
-			            console.log("fdasdas");
-			            debugger;
+			            console.log(response.data);
+			            // debugger;
 			            $ionicPopup
 				            .alert({
 								title: 'Barcode does not exist',
@@ -75,8 +75,8 @@ function ($scope, $stateParams, $auth, $rootScope, $state, $cordovaBarcodeScanne
 			        {
 			            $ionicPopup
 				            .alert({
-				                title: 'Barcode does exist',
-				                template: 'This barcode exist in server'
+				                title: 'Barcode exist',
+				                template: 'This barcode represent: '+response.data[0].code_type
 				            });
 			        }
 			},
@@ -87,7 +87,7 @@ function ($scope, $stateParams, $auth, $rootScope, $state, $cordovaBarcodeScanne
 						title: 'Check your Connection',
 						template: 'There is a problem !'
 					});
-			})
-	} // end of "$scope.postBarcode" function
+			});
+	}; // end of "$scope.postBarcode" function
 
-}])
+}]);
